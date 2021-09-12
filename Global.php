@@ -1,0 +1,6 @@
+<?php
+
+$usernameGlobal = '';
+$categoryGlobal = '';
+
+?>
