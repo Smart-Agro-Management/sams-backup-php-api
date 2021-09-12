@@ -7,63 +7,58 @@ $Decode = json_decode($Encode, true);
 
 $username = $Decode['username'];
 $category = $Decode['category'];
-
-if($category == 'Agent'){
-	$message = "Nicely Done"
-	echo json_decode($message);
-}
-
-/*$name = $DecodeData["name"];
-$password = $DecodeData["password"];
-$phone = $DecodeData["phone"];
-$nid = $DecodeData["nid"];
-$city = $DecodeData["city"];
-$dob = $DecodeData["dob"];
+$name = $Decode["name"];
+$password = $Decode["password"];
+$phone = $Decode["phone"];
+$nid = $Decode["nid"];
+$city = $Decode["city"];
+$dob = $Decode["dob"];
 
 if($category == 'Customer'){
 	$query = "UPDATE CustomerTable SET Name='$name', City='$city', Phone='$phone', NID='$nid', Password='$password', DOB='$dob' WHERE Username = '$username';";
+	$query1 = "UPDATE Login SET Password='$password' WHERE Username = '$username';";
     $table = mysqli_query($connection, $query);
-	$row = mysqli_fetch_assoc($table);
-	$Name = $row["Name"];
-		$City = $row["City"];
-		$Phone = $row["Phone"];
-		$NID = $row["NID"];
-		$Password = $row["Password"];
-		$DOB = $row["DOB"];
+    $table1 = mysqli_query($connection, $query1);
+	if($table && $table1){
 		$message= "Updated!";
-		$response[] = array("Name"=>$Name, "City"=>$City, "Phone"=>$Phone, "NID"=>$NID, "Password"=>$Password, "DOB"=>$DOB, "Message"=>$message);
-		echo json_encode($response);
+		echo json_encode($message);
+	}
+	else{
+		$message = "Something wrong!";
+		echo json_encode($message);
+	}
 }
 else if($category == 'Agent'){
 	$query = "UPDATE AgentTable SET Name='$name', City='$city', Phone='$phone', NID='$nid', Password='$password', DOB='$dob' WHERE Username = '$username';";
-    $table = mysqli_query($connection, $query);
-	$row = mysqli_fetch_assoc($table);
-	$Name = $row["Name"];
-		$City = $row["City"];
-		$Phone = $row["Phone"];
-		$NID = $row["NID"];
-		$Password = $row["Password"];
-		$DOB = $row["DOB"];
+    $query1 = "UPDATE Login SET Password='$password' WHERE Username = '$username';";
+	$table = mysqli_query($connection, $query);
+    $table1 = mysqli_query($connection, $query1);
+	if($table && $table1){
 		$message= "Updated!";
-		$response[] = array("Name"=>$Name, "City"=>$City, "Phone"=>$Phone, "NID"=>$NID, "Password"=>$Password, "DOB"=>$DOB, "Message"=>$message);
-		echo json_encode($response);
+		echo json_encode($message);
+	}
+	else{
+		$message = "Something wrong!";
+		echo json_encode($message);
+	}
 }
 else if($category == 'Farmer'){
 	$query = "UPDATE FarmerTable SET Name='$name', City='$city', Phone='$phone', NID='$nid', Password='$password', DOB='$dob' WHERE Username = '$username';";
-    $table = mysqli_query($connection, $query);
-	$row = mysqli_fetch_assoc($table);
-	$Name = $row["Name"];
-		$City = $row["City"];
-		$Phone = $row["Phone"];
-		$NID = $row["NID"];
-		$Password = $row["Password"];
-		$DOB = $row["DOB"];
-		$response[] = array("Name"=>$Name, "City"=>$City, "Phone"=>$Phone, "NID"=>$NID, "Password"=>$Password, "DOB"=>$DOB);
-		echo json_encode($response);
+    $query1 = "UPDATE Login SET Password='$password' WHERE Username = '$username';";
+	$table = mysqli_query($connection, $query);
+    $table1 = mysqli_query($connection, $query1);
+	if($table && $table1){
+		$message= "Updated!";
+		echo json_encode($message);
+	}
+	else{
+		$message = "Something wrong!";
+		echo json_encode($message);
+	}
 }
 else{
 	$message = "Something wrong!";
-	echo json_decode($message);
-}*/
+	echo json_encode($message);
+}
 
 ?>
