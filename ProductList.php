@@ -17,7 +17,8 @@ if(mysqli_num_rows($table)>=1){
 	$Price = $row["Price"];
 	$Quantity = $row["Quantity"];
 	$Description = $row["Description"];
-	$response[] = array("ID"=>$ID, "Name"=>$Name, "Price"=>$Price, "Quantity"=>$Quantity, "Description"=>$Description,);
+	$Unit = $row["Unit"];
+	$response[] = array("ID"=>$ID, "Name"=>$Name, "Price"=>$Price, "Quantity"=>$Quantity, "Description"=>$Description, "Unit"=>$Unit);
 	}
 	echo json_encode($response);
 }
@@ -27,7 +28,8 @@ else{
 	$Price = "";
 	$Quantity = "";
 	$Description = "";
-	$response[] = array("ID"=>$ID, "Name"=>$Name, "Price"=>$Price, "Quantity"=>$Quantity, "Description"=>$Description,);
+	$Unit = "";
+	$response[] = array("ID"=>$ID, "Name"=>$Name, "Price"=>$Price, "Quantity"=>$Quantity, "Description"=>$Description, "Unit"=>$Unit);
 	echo json_encode($response);
 }
 

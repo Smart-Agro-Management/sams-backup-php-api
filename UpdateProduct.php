@@ -9,8 +9,9 @@ $id = $Decode["id"];
 $name = $Decode["name"];
 $price = $Decode["price"];
 $description = $Decode["description"];
+$unit = $Decode["unit"];
 
-$query = "UPDATE Stock SET Name = '$name', Price = '$price', Description = '$description' WHERE ID = '$id';";
+$query = "UPDATE Stock SET Name = '$name', Price = '$price', Description = '$description', Unit = '$unit' WHERE ID = '$id';";
 $table = mysqli_query($connection, $query);
 
 if($table){

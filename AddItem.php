@@ -8,8 +8,9 @@ $name = $DecodeData["name"];
 $username = $DecodeData["username"];
 $price = $DecodeData["price"];
 $description = $DecodeData["description"];
+$unit = $DecodeData["unit"];
 
-$query = "INSERT INTO Stock (Name, Price, Description, FarmerUsername) VALUES ('$name', '$price', '$description', '$username');";
+$query = "INSERT INTO Stock (Name, Price, Description, FarmerUsername, Unit) VALUES ('$name', '$price', '$description', '$username', '$unit');";
 $execute = mysqli_query($connection, $query);
 
 if($execute){

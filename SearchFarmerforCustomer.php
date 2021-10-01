@@ -6,8 +6,15 @@ $Encode = file_get_contents('php://input');
 $Decode = json_decode($Encode, true);
 
 $searchName = $Decode['searchName'];
+$username = $Decode['username'];
 
-$query = "select * from FarmerTable WHERE Username = '$searchName';";
+$query1 = "select City from CustomerTable WHERE Username = '$username'";
+$table1 = mysqli_query($connection, $query1);
+
+$row1 = mysqli_fetch_assoc($table1);
+$city = $row1['City'];
+
+$query = "select * from FarmerTable WHERE Name LIKE '%$searchName%' AND City = '$city';";
 $table = mysqli_query($connection, $query);
 
 if(mysqli_num_rows($table)>=1){

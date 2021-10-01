@@ -15,14 +15,16 @@ if($table){
 	$Name = $row["Name"];
 	$Price = $row["Price"];
 	$Description = $row["Description"];
-	$response[] = array("Name"=>$Name, "Price"=>$Price, "Description"=>$Description,);
+	$Unit = $row["Unit"];
+	$response[] = array("Name"=>$Name, "Price"=>$Price, "Description"=>$Description, "Unit"=>$Unit);
 	echo json_encode($response);
 }
 else{
 	$Name = "";
 	$Price = "";
 	$Description = "";
-	$response[] = array("Name"=>$Name, "Price"=>$Price, "Description"=>$Description,);
+	$Unit = "";
+	$response[] = array("Name"=>$Name, "Price"=>$Price, "Description"=>$Description, "Unit"=>$Unit);
 	echo json_encode($response);
 }
 

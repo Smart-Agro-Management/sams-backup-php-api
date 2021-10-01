@@ -1,9 +1,18 @@
 <?php
 
 $connection = mysqli_connect("localhost", "root", "", "mytest");
+$Encode = file_get_contents('php://input');
+$Decode = json_decode($Encode, true);
 
-$query = "select * from FarmerTable";
+$username = $Decode['username'];
 
+$query1 = "select City from CustomerTable WHERE Username = '$username'";
+$table1 = mysqli_query($connection, $query1);
+
+$row1 = mysqli_fetch_assoc($table1);
+$city = $row1['City'];
+
+$query = "select * from FarmerTable WHERE City = '$city'";
 $table = mysqli_query($connection, $query);
 
 if(mysqli_num_rows($table)>=1){
@@ -15,7 +24,8 @@ if(mysqli_num_rows($table)>=1){
 	$NID = $row["NID"];
 	$DOB = $row["DOB"];
 	$Category = $row["Category"];
-	$response[] = array("Username"=>$Username, "Name"=>$Name, "City"=>$City, "Phone"=>$Phone, "NID"=>$NID, "DOB"=>$DOB, "Category"=>$Category);
+	$Rating = $row["Rating"];
+	$response[] = array("Username"=>$Username, "Name"=>$Name, "City"=>$City, "Phone"=>$Phone, "NID"=>$NID, "DOB"=>$DOB, "Category"=>$Category, "Rating"=>$Rating);
 	}
 	echo json_encode($response);
 	mysqli_close($connection);
@@ -28,7 +38,8 @@ else{
 	$NID = "";
 	$DOB = "";
 	$Category = "";
-	$response[] = array("Username"=>$Username, "Name"=>$Name, "City"=>$City, "Phone"=>$Phone, "NID"=>$NID, "DOB"=>$DOB, "Category"=>$Category);
+	$Rating = "";
+	$response[] = array("Username"=>$Username, "Name"=>$Name, "City"=>$City, "Phone"=>$Phone, "NID"=>$NID, "DOB"=>$DOB, "Category"=>$Category, "Rating"=>$Rating);
 	echo json_encode($response);
 	mysqli_close($connection);
 }
